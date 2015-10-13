@@ -58,6 +58,10 @@ public class Word implements Comparable<Word>{
 		
 	}
 	
+	public static void incrementComparisonsCount() {
+		comparisons++;
+	}
+	
 	// Resets the comparison counter
 	public static void resetComparisons() {
 		

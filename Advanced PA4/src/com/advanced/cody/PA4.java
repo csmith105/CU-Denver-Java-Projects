@@ -107,7 +107,7 @@ public class PA4 {
 		System.out.println("The end index is " + endIndex + " (element value of: " + array[endIndex] + ")");
 		System.out.println();
 		
-		// Seach loop
+		// Search loop
 		while(true) {
 			
 			System.out.print("Choose a value to search for: ");
