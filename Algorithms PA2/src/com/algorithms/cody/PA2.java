@@ -205,7 +205,7 @@ public class PA2 {
 		// 4. Using a Hashtable
 		System.out.println("Starting Sorted Hashtable...");
 		
-		Hashtable<String, Word> hashtable = new Hashtable<String, Word>();
+		MHT hashtable = new MHT();
 		
 		// For each line in lines, try to create a word, store the successes into the vectorWordList
 		for(String string : lines) {
@@ -214,10 +214,10 @@ public class PA2 {
 			
 			if(word != null) {
 				
-				boolean foundWord = hashtable.containsKey(word.getString());
+				Word foundWord = hashtable.get(word.getString());
 				
-				if(foundWord) {
-					hashtable.get(word.getString()).incrementCount();
+				if(foundWord != null) {
+					foundWord.incrementCount();
 				} else {
 					hashtable.put(word.getString(), word);
 					++assignmentCount;

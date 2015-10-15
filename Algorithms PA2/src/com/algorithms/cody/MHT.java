@@ -8,7 +8,9 @@ import com.algorithms.cody.HashEntry;
 
 public class MHT {
 	
-    private final static int TABLE_SIZE = 200000;
+    private final static int TABLE_SIZE = 1200000;
+    
+    private int size = 0;
 
     HashEntry[] table;
 
@@ -33,6 +35,10 @@ public class MHT {
           return(table[hash] == null) ? null : table[hash].getValue();
 
     }
+    
+    public int size() {
+    		return size;
+    }
 
     public void put(String key, Word value) {
     	
@@ -44,6 +50,7 @@ public class MHT {
           }
                 
           table[hash] = new HashEntry(key, value);
+          ++size;
           
     }
     
