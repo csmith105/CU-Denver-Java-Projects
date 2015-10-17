@@ -7,7 +7,7 @@ import com.algorithms.cody.HashEntry;
  */
 
 public class MHT {
-	
+  
     private final static int TABLE_SIZE = 1200000;
     
     private int size = 0;
@@ -15,7 +15,7 @@ public class MHT {
     HashEntry[] table;
 
     MHT() {
-    	
+      
           table = new HashEntry[TABLE_SIZE];
           
           for (int i = 0; i < TABLE_SIZE; i++)
@@ -24,12 +24,12 @@ public class MHT {
     }
 
     public Word get(String key) {
-    	
-          int hash = (key.hashCode() % TABLE_SIZE);
+      
+          int hash = (Math.abs(key.hashCode()) % TABLE_SIZE);
           
-          while (table[hash] != null && table[hash].getKey() != key) {
-        	  	hash = (hash + 1) % TABLE_SIZE;
-        	  	Word.incrementComparisonsCount();
+          while (table[hash] != null && table[hash].getKey() != key && !key.equals(table[hash].getKey())) {
+              hash = (hash + 1) % TABLE_SIZE;
+              Word.incrementComparisonsCount();
           }
           
           return(table[hash] == null) ? null : table[hash].getValue();
@@ -37,17 +37,17 @@ public class MHT {
     }
     
     public int size() {
-    		return size;
+        return size;
     }
 
     public void put(String key, Word value) {
-    	
-          int hash = (key.hashCode() % TABLE_SIZE);
+      
+      int hash = (Math.abs(key.hashCode()) % TABLE_SIZE);
           
-          while (table[hash] != null && table[hash].getKey() != key) {
-        	  	hash = (hash + 1) % TABLE_SIZE;
-        	  	Word.incrementComparisonsCount();
-          }
+         while (table[hash] != null && table[hash].getKey() != key && !key.equals(table[hash].getKey())) {
+           hash = (hash + 1) % TABLE_SIZE;
+           Word.incrementComparisonsCount();
+         }
                 
           table[hash] = new HashEntry(key, value);
           ++size;
